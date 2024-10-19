@@ -1,0 +1,460 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", serif;
+  background-color: #141625;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 15px;
+}
+
+.loginFormContainer {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  width: 30%;
+  padding: 15px;
+  background-color: #1f213a;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.loginFormTitle {
+  font-weight: 600;
+}
+
+.loginFormInput {
+  width: 100%;
+  border: 1px solid #4c4d6c;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+}
+
+.loginFormSubmitBtn {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: green;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.navBar {
+  background-color: #1f213a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.logo {
+  align-self: flex-start;
+  width: 125px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.userImageAndLogoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.userImage {
+  padding: 20px 40px;
+  border-left: 1px solid #4c4d6c;
+}
+
+.userImage img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.logoutBtn {
+  border: none;
+  outline: none;
+  border-radius: 100px;
+  background-color: #ed2c49;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+}
+
+.mainContent {
+  background-color: #141625;
+}
+
+.mainContentHeading {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.mainContentHeadingLeft h2 {
+  font-weight: 600;
+}
+
+.totalNumberOfQuotations {
+  font-size: 15px;
+}
+
+.filterByStatus {
+  padding: 13px 20px;
+  outline: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.mainContentHeadingRight {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.createNewQuotationBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #7c5df9;
+  padding: 10px;
+  border-radius: 100px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.createNewQuotationBtn p {
+  font-size: 15px;
+}
+
+.createNewQuotationBtnIcon {
+  color: #fff;
+}
+
+.singleQuotation {
+  background-color: #1f2139;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.singleQuotation {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  cursor: pointer;
+}
+
+.quotationStatusBtn {
+  background-color: #2b2735;
+  color: #fb8f1e;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.quotationStatusIcon {
+  width: 10px;
+  height: 10px;
+  background-color: #fb8f1e;
+  border-radius: 100%;
+}
+
+.createQuotationHeader {
+  padding: 10px;
+  background-color: #1f213a;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.createQuotationHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.createQuotationHeaderStatusBtn {
+  background-color: #2b2735;
+  color: #fb8f1e;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+}
+
+.createQuotationHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quotationConfirmBtn {
+  background-color: green;
+  color: #fff;
+}
+
+.quotationCancelBtn {
+  background-color: #ed2c49;
+  color: #fff;
+}
+
+.createQuotationForm {
+  padding: 10px;
+  background-color: #1f213a;
+  border-radius: 8px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.createQuotationFormLabel {
+  font-size: 15px;
+  color: #fff;
+}
+
+.createQuotationFormInput {
+  width: 100%;
+  border: 1px solid #4c4d6c;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+}
+
+.orderLineProduct {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.orderLineInput {
+  border: 1px solid #4c4d6c;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+}
+
+.customerInputContainer {
+  position: relative;
+}
+
+.existingCustomers {
+  position: absolute;
+  width: 100%;
+  bottom: -80px;
+  transform: translateY(50px);
+  background-color: white;
+  border-radius: 5px;
+  height: 130px;
+  overflow-y: scroll;
+}
+
+.existingCustomer {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.existingCustomer:hover {
+  background-color: #ddd;
+}
+
+.existingCustomer:last-of-type {
+  border-bottom: none;
+}
+
+.orderLineProductInputContainer {
+  width: 40%;
+  position: relative;
+}
+
+#orderLineProductInput {
+  width: 100%;
+}
+
+.existingProducts {
+  position: absolute;
+  width: 100%;
+  bottom: -80px;
+  transform: translateY(50px);
+  background-color: white;
+  border-radius: 5px;
+  height: 130px;
+  overflow-y: scroll;
+}
+
+.existingProduct {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.existingProduct:hover {
+  background-color: #ddd;
+}
+
+.existingProduct:last-of-type {
+  border-bottom: none;
+}
+
+#orderLineQuantityInput,
+#orderLineUnitPriceInput {
+  width: 28.5%;
+}
+
+.createNewOrderLineBtnIcon {
+  color: #fff;
+  cursor: pointer;
+}
+
+.removeOrderLineBtnIcon {
+  color: #ed2c49;
+  cursor: pointer;
+}
+
+.confirmedQuotation {
+  background-color: #1e2c41;
+  color: #43b497;
+}
+
+.confirmedQuotationIcon {
+  background-color: #43b497;
+}
+
+.cancelledQuotation {
+  background-color: #c9545421;
+  color: red;
+}
+
+.cancelledQuotationIcon {
+  background-color: red;
+}
+
+/* Responsiveness (start) */
+
+@media (min-width: 0px) {
+  .singleQuotation {
+    justify-content: start;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .mainContentHeading {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mainContentHeadingRight {
+    align-items: start;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .navBar {
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .userImageAndLogoutBtn {
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid #4c4d6c;
+  }
+}
+@media (min-width: 576px) {
+  .mainContentHeadingRight {
+    align-items: center;
+    gap: 40px;
+    flex-direction: row;
+  }
+
+  .navBar {
+    align-items: center;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .userImageAndLogoutBtn {
+    justify-content: end;
+    border-top: none;
+  }
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+  .singleQuotation {
+    justify-content: space-between;
+    gap: 0px;
+    flex-wrap: nowrap;
+  }
+
+  .mainContentHeading {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1400px) {
+}
+
+/* Responsiveness (end) */
