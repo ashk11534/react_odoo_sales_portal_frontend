@@ -3,6 +3,7 @@ import ExistingProduct from "./ExistingProduct";
 
 const OrderLineProduct = function ({
   id,
+  currentOrderLineId,
   handleRemoveOrderLine,
   productRef,
   productQuantityRef,
@@ -12,6 +13,7 @@ const OrderLineProduct = function ({
   existingProducts,
   setExistingProducts,
 }) {
+
   const handleProductQuantity = function (e) {
     const toUpdateProduct = selectedProducts.find((prod) => prod.lineId === id);
     toUpdateProduct.product_qty = Number(e.target.value);
@@ -34,7 +36,7 @@ const OrderLineProduct = function ({
 
     form_data.append("productName", searchedVal);
 
-    fetch("http://localhost:8085/search-product", {
+    fetch("http://localhost:8089/search-product", {
       method: "POST",
       body: form_data,
     })
@@ -58,7 +60,7 @@ const OrderLineProduct = function ({
           ref={productRef}
           onChange={handleProductSearch}
         />
-        {existingProducts.length > 0 && (
+        {(existingProducts.length > 0 && id === currentOrderLineId) &&
           <div className="existingProducts">
             {existingProducts.map((prod) => (
               <ExistingProduct
@@ -69,7 +71,7 @@ const OrderLineProduct = function ({
               />
             ))}
           </div>
-        )}
+        }
       </div>
       <input
         type="number"

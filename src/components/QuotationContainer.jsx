@@ -11,7 +11,7 @@ const QuotationContainer = function () {
       localStorage.getItem("react_odoo_sales_portal_user")
     );
 
-    fetch("http://localhost:8085/retrieve-quotations", {
+    fetch("http://localhost:8089/retrieve-quotations", {
       method: "POST",
       body: formData,
     })

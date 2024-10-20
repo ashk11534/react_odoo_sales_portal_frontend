@@ -9,12 +9,15 @@ const CreateQuotationForm = function ({
   quotationDateRef,
   setSelectedProducts,
   selectedProducts,
+  customerRef,
+  orderLineProducts,
+  setOrderLineProducts,
 }) {
-  const [orderLineProducts, setOrderLineProducts] = useState([]);
+
   const [existingCustomers, setExistingCustomers] = useState([]);
   const [existingProducts, setExistingProducts] = useState([]);
-
-  const customerRef = useRef(null);
+  const [currentOrderLineId, setCurrentOrderLineId] = useState(null);
+  
   const productRef = useRef(null);
   const productQuantityRef = useRef(null);
   const unitPriceRef = useRef(null);
@@ -22,6 +25,7 @@ const CreateQuotationForm = function ({
   const handleSetOrderLineProducts = function () {
     const newOrderLine = crypto.randomUUID();
     setOrderLineProducts((cur) => [...cur, newOrderLine]);
+    setCurrentOrderLineId(newOrderLine);
   };
 
   const handleRemoveOrderLine = function (id) {
@@ -45,7 +49,7 @@ const CreateQuotationForm = function ({
 
     form_data.append("customerName", searchedVal);
 
-    fetch("http://localhost:8085/search-customer", {
+    fetch("http://localhost:8089/search-customer", {
       method: "POST",
       body: form_data,
     })
@@ -138,6 +142,7 @@ const CreateQuotationForm = function ({
             <OrderLineProduct
               key={lp}
               id={lp}
+              currentOrderLineId={currentOrderLineId}
               handleRemoveOrderLine={handleRemoveOrderLine}
               existingProducts={existingProducts}
               productRef={productRef}

@@ -16,7 +16,7 @@ const NavBar = function ({ setLoggedIn }) {
       localStorage.getItem("react_odoo_sales_portal_user")
     );
 
-    fetch("http://localhost:8085/search-user", {
+    fetch("http://localhost:8089/search-user", {
       method: "POST",
       body: formData,
     })
@@ -37,7 +37,8 @@ const NavBar = function ({ setLoggedIn }) {
           Log out
         </button>
         <div className="userImage">
-          <img src={`data:image/png;base64,${userImage}`} alt="user image" />
+          {userImage && <img src={`data:image/png;base64,${userImage}`} alt="user image" />}
+          {!userImage && <img src="images/guest_user_image.jpg" alt="user image" />}
         </div>
       </div>
     </nav>
