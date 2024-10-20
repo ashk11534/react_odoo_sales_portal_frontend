@@ -1,4 +1,8 @@
-const CreateQuotationHeader = function ({ handleFormSubmission }) {
+
+import UseAnimations from "react-useanimations";
+import loading from 'react-useanimations/lib/loading'
+
+const CreateQuotationHeader = function ({ handleFormSubmission, quotationCreating }) {
   return (
     <div className="createQuotationHeader mt-4 mb-2">
       <div className="createQuotationHeaderLeft">
@@ -8,12 +12,14 @@ const CreateQuotationHeader = function ({ handleFormSubmission }) {
         </button>
       </div>
       <div className="createQuotationHeaderRight">
-        <button
+        {!quotationCreating && <button
           className="createQuotationHeaderStatusBtn quotationConfirmBtn"
           onClick={handleFormSubmission}
         >
           Confirm
-        </button>
+        </button>}
+
+        {quotationCreating && <button className="createQuotationHeaderStatusBtn quotationConfirmBtn"><UseAnimations animation={loading} size={20} strokeColor="#fff" /></button>}
         {/* <button className="createQuotationHeaderStatusBtn quotationCancelBtn">
           Cancel
         </button> */}

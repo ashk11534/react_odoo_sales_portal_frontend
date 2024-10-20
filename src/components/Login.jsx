@@ -1,11 +1,17 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import UseAnimations from "react-useanimations";
+import loading from 'react-useanimations/lib/loading'
 
-const Login = function ({ handleLoginFormSubmission, wrongLoginCredentials }) {
+const Login = function ({ handleLoginFormSubmission, wrongLoginCredentials, loggingIn }) {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
   const handleSubmission = function (e) {
     e.preventDefault();
+
+    if(emailRef.current.value.length === 0 && passwordRef.current.value.length === 0){
+      return;
+    }
 
     const formData = {
       email: emailRef.current.value,
@@ -36,7 +42,8 @@ const Login = function ({ handleLoginFormSubmission, wrongLoginCredentials }) {
           id="userPassword"
           ref={passwordRef}
         />
-        <button className="loginFormSubmitBtn">Login</button>
+        {!loggingIn && <button className="loginFormSubmitBtn">Login</button>}
+        {loggingIn && <button type="button" className="loginFormSubmitBtn" disabled={true}><UseAnimations animation={loading} size={25} strokeColor="#fff" /></button>}
       </form>
     </div>
   );

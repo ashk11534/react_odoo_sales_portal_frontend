@@ -5,6 +5,8 @@ import Login from "./components/Login";
 import { useState } from "react";
 
 function App() {
+  const[loggingIn, setLoggingIn] = useState(false);
+
   const [loggedIn, setLoggedIn] = useState(() => {
     const user_id = localStorage.getItem("react_odoo_sales_portal_user");
     if (user_id) return true;
@@ -17,7 +19,9 @@ function App() {
     data.append("email", formData.email);
     data.append("password", formData.password);
 
-    fetch("http://localhost:8085/login-react-sales-portal-user", {
+    setLoggingIn(true);
+
+    fetch("http://localhost:8089/login-react-sales-portal-user", {
       method: "POST",
       body: data,
     })
@@ -25,9 +29,12 @@ function App() {
       .then((data) => {
         if (data.code === 200) {
           setLoggedIn(true);
+          setLoggingIn(false);
+          setWrongLoginCredentials(false);
           localStorage.setItem("react_odoo_sales_portal_user", data.user_id);
         }
         if (data.code === 404) {
+          setLoggingIn(false);
           setWrongLoginCredentials(true);
         }
       });
@@ -46,8 +53,10 @@ function App() {
         <Login
           handleLoginFormSubmission={handleLoginFormSubmission}
           wrongLoginCredentials={wrongLoginCredentials}
+          loggingIn={loggingIn}
         />
-      )}
+      )
+      }
     </div>
   );
 }
