@@ -4,7 +4,7 @@ const Quotation = function ({ quotation }) {
       <h5>#{quotation.quotation_name}</h5>
       <p>{quotation.order_date}</p>
       <p>{quotation.customer_name}</p>
-      <p>BDT {quotation.amount_total}</p>
+      <p>{quotation.currency}{quotation.amount_total}</p>
       {quotation.quotation_state === "sale" && (
         <div className="quotationStatusBtn confirmedQuotation">
           <div className="quotationStatusIcon confirmedQuotationIcon"></div>

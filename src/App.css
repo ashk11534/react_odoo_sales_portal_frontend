@@ -25,6 +25,12 @@ p {
   font-size: 15px;
 }
 
+.loaderIcon{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .loginFormContainer {
   width: 100%;
   height: 100vh;
