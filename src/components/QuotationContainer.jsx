@@ -1,8 +1,8 @@
+import Loader from "./Loader";
 import Quotation from "./Quotation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const QuotationContainer = function () {
-  const [quotations, setQuotations] = useState([]);
+const QuotationContainer = function ({quotations, setQuotations, quotationsLoading, setQuotationsLoading}) {
 
   useEffect(() => {
     const formData = new FormData();
@@ -10,6 +10,8 @@ const QuotationContainer = function () {
       "userId",
       localStorage.getItem("react_odoo_sales_portal_user")
     );
+
+    setQuotationsLoading(true);
 
     fetch("http://localhost:8089/retrieve-quotations", {
       method: "POST",
@@ -19,13 +21,16 @@ const QuotationContainer = function () {
       .then((data) => {
         if (data.code === 200) {
           setQuotations(data.quotation_data);
+          setQuotationsLoading(false);
         }
       });
   }, []);
 
   return (
     <div className="quotationsList">
-      {quotations.map((quotation) => (
+      {quotationsLoading && <Loader/>}
+
+      {!quotationsLoading && quotations.map((quotation) => (
         <Quotation key={quotation.quotation_id} quotation={quotation} />
       ))}
     </div>
