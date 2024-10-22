@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "./context_store/app_context";
 
 const NavBar = function ({ setLoggedIn }) {
   const [userImage, setUserImage] = useState("");
@@ -8,6 +9,8 @@ const NavBar = function ({ setLoggedIn }) {
     localStorage.removeItem("react_odoo_sales_portal_user");
     setLoggedIn(false);
   };
+
+  const {handleReRenderHomePage} = useContext(AppContext)
 
   useEffect(() => {
     const formData = new FormData();
@@ -28,7 +31,7 @@ const NavBar = function ({ setLoggedIn }) {
 
   return (
     <nav className="navBar mt-2">
-      <Link to="/" className="logo">
+      <Link to="/" className="logo" onClick={handleReRenderHomePage}>
         <img src="images/sales_logo.png" alt="Logo" />
       </Link>
 
