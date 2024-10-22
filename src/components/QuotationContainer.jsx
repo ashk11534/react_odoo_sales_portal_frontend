@@ -1,8 +1,11 @@
 import Loader from "./Loader";
 import Quotation from "./Quotation";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AppContext } from "./context_store/app_context";
 
 const QuotationContainer = function ({quotations, setQuotations, quotationsLoading, setQuotationsLoading}) {
+
+  const {reRenderHomePage} = useContext(AppContext)
 
   useEffect(() => {
     const formData = new FormData();
@@ -24,7 +27,7 @@ const QuotationContainer = function ({quotations, setQuotations, quotationsLoadi
           setQuotationsLoading(false);
         }
       });
-  }, []);
+  }, [reRenderHomePage]);
 
   return (
     <div className="quotationsList">

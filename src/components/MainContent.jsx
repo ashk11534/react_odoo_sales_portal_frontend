@@ -8,7 +8,7 @@ const MainContent = function () {
 
   return (
     <div className="mainContent">
-      <MainContentHeading setQuotations={setQuotations} setQuotationsLoading={setQuotationsLoading} />
+      <MainContentHeading quotations={quotations} setQuotations={setQuotations} setQuotationsLoading={setQuotationsLoading} />
       <QuotationContainer quotations={quotations} setQuotations={setQuotations} quotationsLoading={quotationsLoading} setQuotationsLoading={setQuotationsLoading} />
     </div>
   );

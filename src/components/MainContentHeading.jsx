@@ -1,11 +1,17 @@
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { AppContext } from "./context_store/app_context";
 
-const MainContentHeading = function ({setQuotations, setQuotationsLoading}) {
+const MainContentHeading = function ({quotations, setQuotations, setQuotationsLoading}) {
+
+  const [filterVal, setFilterVal] = useState("");
+  const {reRenderHomePage} = useContext(AppContext);
 
   const handleFilterQuotations = function(e){
     const filterVal = e.target.value;
+
+    setFilterVal(e.target.value);
 
     if(filterVal == '') return;
 
@@ -27,14 +33,20 @@ const MainContentHeading = function ({setQuotations, setQuotationsLoading}) {
     })
   }
 
+  useEffect(() => {
+
+    setFilterVal("");
+
+  }, [reRenderHomePage]);
+
   return (
     <div className="mainContentHeading mt-3 mb-5">
       <div className="mainContentHeadingLeft">
         <h2 className="mb-2">Quotations</h2>
-        <p className="totalNumberOfQuotations">There are 10 total quotations</p>
+        <p className="totalNumberOfQuotations">There are {quotations.length} total quotations</p>
       </div>
       <div className="mainContentHeadingRight">
-        <select className="filterByStatus" onChange={handleFilterQuotations}>
+        <select className="filterByStatus" value={filterVal} onChange={handleFilterQuotations}>
           <option value="">Filter by status</option>
           <option value="all">All</option>
           <option value="sale">Confirmed</option>
