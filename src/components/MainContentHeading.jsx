@@ -49,6 +49,7 @@ const MainContentHeading = function ({quotations, setQuotations, setQuotationsLo
         <select className="filterByStatus" value={filterVal} onChange={handleFilterQuotations}>
           <option value="">Filter by status</option>
           <option value="all">All</option>
+          {/* <option value="draft">Quotation</option> */}
           <option value="sale">Confirmed</option>
           <option value="cancel">Cancelled</option>
         </select>

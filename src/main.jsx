@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App.jsx";
 import MainContent from "./components/MainContent.jsx";
 import CreateQuotation from "./components/CreateQuotation.jsx";
+import QuotationDetails from "./components/quotationDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
         path: "/create-quotation",
         element: <CreateQuotation />,
       },
+
+      {
+        path: "/quotation-details/:quotation_id",
+        element: <QuotationDetails/>
+      }
     ],
   },
 ]);

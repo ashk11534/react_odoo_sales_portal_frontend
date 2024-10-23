@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const Quotation = function ({ quotation }) {
   return (
-    <div className="singleQuotation mb-3">
+    <Link to={`/quotation-details/${quotation.quotation_id}`} className="singleQuotation mb-3">
       <h5>#{quotation.quotation_name}</h5>
       <p>{quotation.order_date}</p>
       <p>{quotation.customer_name}</p>
@@ -19,13 +21,13 @@ const Quotation = function ({ quotation }) {
         </div>
       )}
 
-      {quotation.quotation_state === "draft" && (
+      {/* {quotation.quotation_state === "draft" && (
         <div className="quotationStatusBtn">
           <div className="quotationStatusIcon"></div>
           <p>Quotation</p>
         </div>
-      )}
-    </div>
+      )} */}
+    </Link>
   );
 };
 

@@ -4,14 +4,31 @@ import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import { useState } from "react";
 import {AppContext} from "./components/context_store/app_context";
+import CancelConfirmationModal from "./components/CancelConfirmationModal";
 
 function App() {
   const[loggingIn, setLoggingIn] = useState(false);
   const[reRenderHomePage, setReRenderHomePage] = useState(false);
-
+  const [showCancelConfirmationModal, setShowCancelConfirmationModal] = useState(false);
+  const [permitCancelQuotation, setPermitCancelQuotation] = useState(false);
+  
   const handleReRenderHomePage = function(){
     setReRenderHomePage((cur) => !cur);
   }
+
+  const handleShowCancelConfirmationModal = function(){
+    setShowCancelConfirmationModal(true);
+  }
+
+  const handleHideCancelConfirmationModal = function(){
+    setShowCancelConfirmationModal(false);
+  }
+
+  const handlePermitCancelQuotation = function(){
+    setPermitCancelQuotation((cur) => !cur);
+    setShowCancelConfirmationModal(false);
+  }
+
 
   const [loggedIn, setLoggedIn] = useState(() => {
     const user_id = localStorage.getItem("react_odoo_sales_portal_user");
@@ -50,7 +67,8 @@ function App() {
   return (
     <div className="container">
       {loggedIn && (
-        <AppContext.Provider value={{reRenderHomePage, handleReRenderHomePage}}>
+        <AppContext.Provider value={{reRenderHomePage, handleReRenderHomePage, handleShowCancelConfirmationModal, handleHideCancelConfirmationModal, permitCancelQuotation, handlePermitCancelQuotation}}>
+          {showCancelConfirmationModal && <CancelConfirmationModal/>}
           <NavBar setLoggedIn={setLoggedIn} />
           <Outlet />
         </AppContext.Provider>
@@ -58,7 +76,7 @@ function App() {
 
       {!loggedIn && (
         <Login
-          handleLoginFormSubmission={{handleLoginFormSubmission}}
+          handleLoginFormSubmission={handleLoginFormSubmission}
           wrongLoginCredentials={wrongLoginCredentials}
           loggingIn={loggingIn}
         />
