@@ -1,5 +1,7 @@
 import { TiDelete } from "react-icons/ti";
 import ExistingProduct from "./ExistingProduct";
+import Loader from "./Loader";
+import { useState } from "react";
 
 const OrderLineProduct = function ({
   id,
@@ -14,14 +16,20 @@ const OrderLineProduct = function ({
   setExistingProducts,
 }) {
 
+  const [existingProductsLoading, setExistingProductsLoading] = useState(false);
+
   const handleProductQuantity = function (e) {
-    const toUpdateProduct = selectedProducts.find((prod) => prod.lineId === id);
-    toUpdateProduct.product_qty = Number(e.target.value);
+    if(selectedProducts.length > 0){
+      const toUpdateProduct = selectedProducts.find((prod) => prod.lineId === id);
+      toUpdateProduct.product_qty = Number(e.target.value);
+    }
   };
 
   const handleUnitPrice = function (e) {
-    const toUpdateProduct = selectedProducts.find((prod) => prod.lineId === id);
-    toUpdateProduct.product_price = Number(e.target.value);
+    if(selectedProducts.length > 0){
+      const toUpdateProduct = selectedProducts.find((prod) => prod.lineId === id);
+      toUpdateProduct.product_price = Number(e.target.value);
+    }
   };
 
   const handleProductSearch = function (e) {
@@ -36,6 +44,8 @@ const OrderLineProduct = function ({
 
     form_data.append("productName", searchedVal);
 
+    setExistingProductsLoading(true);
+
     fetch("http://localhost:8089/search-product", {
       method: "POST",
       body: form_data,
@@ -44,6 +54,7 @@ const OrderLineProduct = function ({
       .then((data) => {
         if (data.code === 200) {
           setExistingProducts(data.product_data);
+          setExistingProductsLoading(false);
         }
       });
   };
@@ -72,6 +83,7 @@ const OrderLineProduct = function ({
             ))}
           </div>
         }
+        {existingProductsLoading && id === currentOrderLineId && <div className="existingProductsLoading"><Loader fontSize={20} fontColor={"#000"}/></div>}
       </div>
       <input
         type="number"

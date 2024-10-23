@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "./context_store/app_context";
+import logo from "../../public/images/sales_logo.png";
 
 const NavBar = function ({ setLoggedIn }) {
   const [userImage, setUserImage] = useState("");
@@ -32,7 +33,7 @@ const NavBar = function ({ setLoggedIn }) {
   return (
     <nav className="navBar mt-2">
       <Link to="/" className="logo" onClick={handleReRenderHomePage}>
-        <img src="images/sales_logo.png" alt="Logo" />
+        <img src={logo} alt="Logo" />
       </Link>
 
       <div className="userImageAndLogoutBtn">

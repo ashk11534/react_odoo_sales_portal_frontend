@@ -25,6 +25,57 @@ p {
   font-size: 15px;
 }
 
+.nothingFound{
+  color: #fff;
+  text-align: center;
+}
+
+.cancelConfirmationFormParent{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancelConfirmationForm{
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  width: 95%;
+}
+
+.confirmationButtons{
+  display: flex;
+  gap: 10px;
+}
+
+.confirmationNoBtn, .confirmationYesBtn{
+  border: none;
+  font-size: 14px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.confirmationNoBtn{
+  background-color: red;
+  color: #fff;
+}
+
+.confirmationYesBtn{
+  background-color: green;
+  color: #fff;
+}
+
+.quotationCreationAlert{
+  width: 100%;
+  margin: 0 auto;
+}
+
 .loaderIcon{
   width: 100%;
   display: flex;
@@ -43,7 +94,7 @@ p {
 }
 
 .loginForm {
-  width: 30%;
+  width: 95%;
   padding: 15px;
   background-color: #1f213a;
   color: #fff;
@@ -188,6 +239,7 @@ p {
   border-radius: 8px;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .singleQuotation {
@@ -221,7 +273,7 @@ p {
   justify-content: space-between;
   border-radius: 8px;
   align-items: center;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -265,7 +317,7 @@ p {
   padding: 10px;
   background-color: #1f213a;
   border-radius: 8px;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -314,6 +366,16 @@ p {
   border-radius: 5px;
   height: 130px;
   overflow-y: scroll;
+}
+
+.existingCustomersLoading, .existingProductsLoading{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  transform: translateY(41px);
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .existingCustomer {
@@ -389,12 +451,31 @@ p {
 }
 
 .cancelledQuotation {
-  background-color: #c9545421;
+  background-color: #9a3c3c21;
   color: red;
 }
 
 .cancelledQuotationIcon {
   background-color: red;
+}
+
+.quotationDetails{
+  padding: 10px;
+  background-color: #1f213a;
+  border-radius: 8px;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.quotationDetailOrderLine{
+  padding: 10px;
+  background-color: #141625;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 /* Responsiveness (start) */
@@ -459,6 +540,18 @@ p {
   .mainContentHeading {
     flex-direction: row;
     gap: 0;
+  }
+
+  .createQuotationHeader, .createQuotationForm, .quotationCreationAlert, .quotationDetails{
+    width: 70%;
+  }
+  
+  .loginForm{
+    width: 30%;
+  }
+
+  .cancelConfirmationForm{
+    width: 400px;
   }
 }
 @media (min-width: 1200px) {

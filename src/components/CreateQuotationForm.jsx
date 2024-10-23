@@ -2,6 +2,7 @@ import { FaCirclePlus } from "react-icons/fa6";
 import OrderLineProduct from "./OrderLineProduct";
 import { useRef, useState } from "react";
 import ExistingCustomer from "./ExistingCustomer";
+import Loader from "./Loader";
 
 const CreateQuotationForm = function ({
   setSelectedCustomerId,
@@ -15,6 +16,7 @@ const CreateQuotationForm = function ({
 }) {
 
   const [existingCustomers, setExistingCustomers] = useState([]);
+  const [existingCustomersLoading, setExistingCustomersLoading] = useState(false);
   const [existingProducts, setExistingProducts] = useState([]);
   const [currentOrderLineId, setCurrentOrderLineId] = useState(null);
   
@@ -49,6 +51,8 @@ const CreateQuotationForm = function ({
 
     form_data.append("customerName", searchedVal);
 
+    setExistingCustomersLoading(true);
+
     fetch("http://localhost:8089/search-customer", {
       method: "POST",
       body: form_data,
@@ -57,6 +61,7 @@ const CreateQuotationForm = function ({
       .then((data) => {
         if (data.code === 200) {
           setExistingCustomers(data.customer_data);
+          setExistingCustomersLoading(false);
         }
       });
   };
@@ -108,6 +113,8 @@ const CreateQuotationForm = function ({
             ))}
           </div>
         )}
+
+        {existingCustomersLoading && <div className="existingCustomersLoading"><Loader fontSize={20} fontColor={"#000"}/></div>}
       </div>
 
       <div className="expirationDateInputContainer mb-4">
