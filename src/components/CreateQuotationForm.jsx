@@ -14,12 +14,12 @@ const CreateQuotationForm = function ({
   orderLineProducts,
   setOrderLineProducts,
 }) {
-
   const [existingCustomers, setExistingCustomers] = useState([]);
-  const [existingCustomersLoading, setExistingCustomersLoading] = useState(false);
+  const [existingCustomersLoading, setExistingCustomersLoading] =
+    useState(false);
   const [existingProducts, setExistingProducts] = useState([]);
   const [currentOrderLineId, setCurrentOrderLineId] = useState(null);
-  
+
   const productRef = useRef(null);
   const productQuantityRef = useRef(null);
   const unitPriceRef = useRef(null);
@@ -53,7 +53,7 @@ const CreateQuotationForm = function ({
 
     setExistingCustomersLoading(true);
 
-    fetch("http://localhost:8089/search-customer", {
+    fetch("http://localhost:8085/search-customer", {
       method: "POST",
       body: form_data,
     })
@@ -114,7 +114,11 @@ const CreateQuotationForm = function ({
           </div>
         )}
 
-        {existingCustomersLoading && <div className="existingCustomersLoading"><Loader fontSize={20} fontColor={"#000"}/></div>}
+        {existingCustomersLoading && (
+          <div className="existingCustomersLoading">
+            <Loader fontSize={20} fontColor={"#000"} />
+          </div>
+        )}
       </div>
 
       <div className="expirationDateInputContainer mb-4">

@@ -4,9 +4,13 @@ import { useContext, useEffect } from "react";
 import { AppContext } from "./context_store/app_context";
 import NoQuotationFound from "./NoQuotationFound";
 
-const QuotationContainer = function ({quotations, setQuotations, quotationsLoading, setQuotationsLoading}) {
-
-  const {reRenderHomePage} = useContext(AppContext)
+const QuotationContainer = function ({
+  quotations,
+  setQuotations,
+  quotationsLoading,
+  setQuotationsLoading,
+}) {
+  const { reRenderHomePage } = useContext(AppContext);
 
   useEffect(() => {
     const formData = new FormData();
@@ -17,7 +21,7 @@ const QuotationContainer = function ({quotations, setQuotations, quotationsLoadi
 
     setQuotationsLoading(true);
 
-    fetch("http://localhost:8089/retrieve-quotations", {
+    fetch("http://localhost:8085/retrieve-quotations", {
       method: "POST",
       body: formData,
     })
@@ -32,13 +36,14 @@ const QuotationContainer = function ({quotations, setQuotations, quotationsLoadi
 
   return (
     <div className="quotationsList">
-      {quotationsLoading && <Loader fontSize={56} fontColor={"#fff"}/>}
+      {quotationsLoading && <Loader fontSize={56} fontColor={"#fff"} />}
 
-      {!quotationsLoading && quotations.map((quotation) => (
-        <Quotation key={quotation.quotation_id} quotation={quotation} />
-      ))}
+      {!quotationsLoading &&
+        quotations.map((quotation) => (
+          <Quotation key={quotation.quotation_id} quotation={quotation} />
+        ))}
 
-      {quotations.length === 0 && !quotationsLoading && <NoQuotationFound/>}
+      {quotations.length === 0 && !quotationsLoading && <NoQuotationFound />}
     </div>
   );
 };

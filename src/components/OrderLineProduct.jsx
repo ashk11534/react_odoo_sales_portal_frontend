@@ -15,19 +15,22 @@ const OrderLineProduct = function ({
   existingProducts,
   setExistingProducts,
 }) {
-
   const [existingProductsLoading, setExistingProductsLoading] = useState(false);
 
   const handleProductQuantity = function (e) {
-    if(selectedProducts.length > 0){
-      const toUpdateProduct = selectedProducts.find((prod) => prod.lineId === id);
+    if (selectedProducts.length > 0) {
+      const toUpdateProduct = selectedProducts.find(
+        (prod) => prod.lineId === id
+      );
       toUpdateProduct.product_qty = Number(e.target.value);
     }
   };
 
   const handleUnitPrice = function (e) {
-    if(selectedProducts.length > 0){
-      const toUpdateProduct = selectedProducts.find((prod) => prod.lineId === id);
+    if (selectedProducts.length > 0) {
+      const toUpdateProduct = selectedProducts.find(
+        (prod) => prod.lineId === id
+      );
       toUpdateProduct.product_price = Number(e.target.value);
     }
   };
@@ -46,7 +49,7 @@ const OrderLineProduct = function ({
 
     setExistingProductsLoading(true);
 
-    fetch("http://localhost:8089/search-product", {
+    fetch("http://localhost:8085/search-product", {
       method: "POST",
       body: form_data,
     })
@@ -71,7 +74,7 @@ const OrderLineProduct = function ({
           ref={productRef}
           onChange={handleProductSearch}
         />
-        {(existingProducts.length > 0 && id === currentOrderLineId) &&
+        {existingProducts.length > 0 && id === currentOrderLineId && (
           <div className="existingProducts">
             {existingProducts.map((prod) => (
               <ExistingProduct
@@ -82,8 +85,12 @@ const OrderLineProduct = function ({
               />
             ))}
           </div>
-        }
-        {existingProductsLoading && id === currentOrderLineId && <div className="existingProductsLoading"><Loader fontSize={20} fontColor={"#000"}/></div>}
+        )}
+        {existingProductsLoading && id === currentOrderLineId && (
+          <div className="existingProductsLoading">
+            <Loader fontSize={20} fontColor={"#000"} />
+          </div>
+        )}
       </div>
       <input
         type="number"
